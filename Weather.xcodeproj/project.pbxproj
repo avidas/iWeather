@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0469791A1987576500278829 /* WeatherData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 046979181987576500278829 /* WeatherData.xcdatamodeld */; };
+		0469791D1987D67400278829 /* CityTemperature.m in Sources */ = {isa = PBXBuildFile; fileRef = 0469791C1987D67400278829 /* CityTemperature.m */; };
 		04DB0BE01984302200207D25 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DB0BDF1984302200207D25 /* Foundation.framework */; };
 		04DB0BE21984302200207D25 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DB0BE11984302200207D25 /* CoreGraphics.framework */; };
 		04DB0BE41984302200207D25 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DB0BE31984302200207D25 /* UIKit.framework */; };
@@ -38,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		046979191987576500278829 /* WeatherData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherData.xcdatamodel; sourceTree = "<group>"; };
+		0469791B1987D67400278829 /* CityTemperature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityTemperature.h; sourceTree = "<group>"; };
+		0469791C1987D67400278829 /* CityTemperature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTemperature.m; sourceTree = "<group>"; };
 		04DB0BDC1984302200207D25 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DB0BDF1984302200207D25 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04DB0BE11984302200207D25 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -128,6 +133,9 @@
 			children = (
 				04DB0BEE1984302200207D25 /* AppDelegate.h */,
 				04DB0BEF1984302200207D25 /* AppDelegate.m */,
+				046979181987576500278829 /* WeatherData.xcdatamodeld */,
+				0469791B1987D67400278829 /* CityTemperature.h */,
+				0469791C1987D67400278829 /* CityTemperature.m */,
 				04DB0BF11984302200207D25 /* Main.storyboard */,
 				04DB0BF41984302200207D25 /* FirstViewController.h */,
 				04DB0C1B19844A3500207D25 /* WeatherAnnotation.h */,
@@ -267,8 +275,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0469791A1987576500278829 /* WeatherData.xcdatamodeld in Sources */,
 				04DB0BF91984302200207D25 /* SecondViewController.m in Sources */,
 				04DB0BF01984302200207D25 /* AppDelegate.m in Sources */,
+				0469791D1987D67400278829 /* CityTemperature.m in Sources */,
 				04DB0BF61984302200207D25 /* FirstViewController.m in Sources */,
 				04DB0BEC1984302200207D25 /* main.m in Sources */,
 				04DB0C1D19844A3500207D25 /* WeatherAnnotation.m in Sources */,
@@ -476,6 +486,7 @@
 				04DB0C131984302200207D25 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04DB0C141984302200207D25 /* Build configuration list for PBXNativeTarget "WeatherTests" */ = {
 			isa = XCConfigurationList;
@@ -484,8 +495,22 @@
 				04DB0C161984302200207D25 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		046979181987576500278829 /* WeatherData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				046979191987576500278829 /* WeatherData.xcdatamodel */,
+			);
+			currentVersion = 046979191987576500278829 /* WeatherData.xcdatamodel */;
+			path = WeatherData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 04DB0BD41984302200207D25 /* Project object */;
 }
