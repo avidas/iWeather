@@ -8,6 +8,8 @@
 
 #import "FirstViewController.h"
 #import "WeatherAnnotation.h"
+#import "AppDelegate.h"
+#import "CityTemperature.h"
 
 @interface FirstViewController ()
 @property (nonatomic) NSURLSession *session;
@@ -37,7 +39,17 @@
 	self.placeSearch.delegate = self;
     self.mapView.delegate = self;
     
+    //hide keyboard when area outside search bar tapped
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(hideKeyBoard)];
+    [self.view addGestureRecognizer:tapGesture];
+    
     [self showUserLocation];
+}
+
+-(void)hideKeyBoard {
+    [self.placeSearch resignFirstResponder];
 }
 
 - (void) showUserLocation
@@ -97,11 +109,53 @@
                 
                 //Set visible area of the map around new pin
                 [self setMapVisibleArea:[annotation coordinate]];
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    [self addLocation:self.placeSearch.text Temperature:currentTemperature];
+                });
             });
         });
     }];
     if (self.dataTask) {
         [self.dataTask resume];
+    }
+}
+
+- (void)addLocation:(NSString *)location Temperature:(NSString *)temperature
+{
+    NSError *error;
+    
+    //get managed context from app delegate
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+
+    //set up fetch request for location passed
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"CityTemperature" inManagedObjectContext:context];
+    [request setEntity:entityDesc];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(name = %@)", location];
+    [request setPredicate:pred];
+    
+    //update if entry already exists otherwise create new entry
+    //can be consolidated better
+    NSUInteger count = [context countForFetchRequest:request error:&error];
+    if (count == NSNotFound) {
+        NSLog(@"Error: %@", error);
+    } else if (count == 0){
+        CityTemperature *cityTemp = (CityTemperature *)[NSEntityDescription insertNewObjectForEntityForName:@"CityTemperature" inManagedObjectContext:context];
+        [cityTemp setName:location];
+        [cityTemp setTemperature:temperature];
+    } else {
+        NSArray *items = [context executeFetchRequest:request error:&error];
+        
+        for (CityTemperature *cityTemp in items) {
+            [cityTemp setTemperature:temperature];
+        }
+    }
+    
+    if (![context save:&error]){
+        NSLog(@"Error: %@", error);
+        exit(-1);
     }
 }
 
@@ -139,6 +193,8 @@
     
     [self showLocationTempMap];
 }
+
+
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
