@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SecondViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
 @end
