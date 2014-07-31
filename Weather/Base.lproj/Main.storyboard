@@ -16,17 +16,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="APC-c3-F2A">
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="APC-c3-F2A">
                                 <rect key="frame" x="0.0" y="16" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UHZ-40-2R2">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UHZ-40-2R2">
                                 <rect key="frame" x="0.0" y="60" width="320" height="458"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="APC-c3-F2A" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" id="7sj-yr-Uc4"/>
+                            <constraint firstItem="APC-c3-F2A" firstAttribute="top" secondItem="2VE-Yg-loa" secondAttribute="top" constant="16" id="Ts8-15-imD"/>
+                            <constraint firstItem="dtj-EO-iXF" firstAttribute="top" secondItem="UHZ-40-2R2" secondAttribute="bottom" constant="1" id="cea-8S-JcF"/>
+                            <constraint firstItem="UHZ-40-2R2" firstAttribute="trailing" secondItem="APC-c3-F2A" secondAttribute="trailing" id="dTc-DA-OuQ"/>
+                            <constraint firstAttribute="trailing" secondItem="APC-c3-F2A" secondAttribute="trailing" id="euw-a5-9Vd"/>
+                            <constraint firstItem="UHZ-40-2R2" firstAttribute="leading" secondItem="APC-c3-F2A" secondAttribute="leading" id="tqy-Tj-pja"/>
+                            <constraint firstItem="UHZ-40-2R2" firstAttribute="top" secondItem="APC-c3-F2A" secondAttribute="bottom" id="ygi-79-y9J"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="u1e-5L-l1D"/>
                     <connections>
