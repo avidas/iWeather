@@ -11,7 +11,6 @@
 
 @interface WeatherAnnotation : NSObject <MKAnnotation>
 
-//why copy?
 //these must have names title and subtitle
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;
