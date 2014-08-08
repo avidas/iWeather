@@ -259,7 +259,24 @@
             indexPath = [self.tableView indexPathForSelectedRow];
             info = [self.fetchedResultsController objectAtIndexPath:indexPath];
         }
-        [[segue destinationViewController] setDetailCityTemp:info];
+        
+        if ([segue.destinationViewController isKindOfClass:[DetailViewController class]]) {
+            DetailViewController *dVC = (DetailViewController *)[segue destinationViewController];
+            [dVC setDetailCityTemp:info];
+        }
+    }
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *context = [appDelegate managedObjectContext];
+        
+        NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [context deleteObject:managedObject];
+        [context save:nil];
     }
 }
 
