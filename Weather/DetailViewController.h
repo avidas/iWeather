@@ -10,7 +10,7 @@
 #import "CityTemperature.h"
 
 @interface DetailViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UILabel *detailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 @property (strong, nonatomic) CityTemperature *detailCityTemp;
-@property (strong, nonatomic) IBOutlet UILabel *temperatureLabel;
+@property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
 @end

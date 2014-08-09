@@ -10,8 +10,8 @@
 #import <MapKit/MapKit.h>
 
 @interface FirstViewController : UIViewController <UISearchBarDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
-@property (strong, nonatomic) IBOutlet UISearchBar *placeSearch;
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UISearchBar *placeSearch;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
 @end
