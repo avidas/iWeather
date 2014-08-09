@@ -109,7 +109,7 @@
                 [self.mapView selectAnnotation:annotation animated:YES];
                 
                 //Set visible area of the map around new pin
-                [self setMapVisibleArea:[annotation coordinate]];
+                [self displayMapVisibleArea:[annotation coordinate]];
                 
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     [self addLocation:self.placeSearch.text Temperature:currentTemperature];
@@ -160,13 +160,13 @@
     }
 }
 
-- (void)setMapRegion:(CLLocationCoordinate2D) location
+- (void)displayMapRegion:(CLLocationCoordinate2D) location
 {
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location, 8000, 8000);
     [self.mapView setRegion:region animated:YES];
 }
 
-- (void)setMapVisibleArea:(CLLocationCoordinate2D) location
+- (void)displayMapVisibleArea:(CLLocationCoordinate2D) location
 {
     MKMapRect visibleMap = [self.mapView visibleMapRect]; //get visible map area
     MKMapPoint annotCoordinate = MKMapPointForCoordinate(location); //get annotation coordinate
@@ -182,7 +182,7 @@
         
         //Set map visible area to location entered in search bar
         CLLocationCoordinate2D newLocation = [self getLocation:placemarks];
-        [self setMapRegion:newLocation];
+        [self displayMapRegion:newLocation];
         [self getWeatherData:newLocation];
     }];
 }
